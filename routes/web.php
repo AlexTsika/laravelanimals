@@ -87,8 +87,14 @@ Route::get('/', function () {
 })->name('home');
 
 Route::post('/process', function (Request $request) {
-      // Validate the form data
-      dd($request);
+    // Validate the form data
+    // dd($request);
+
+    // Add flash session notificatie
+    session()->flash('message', 'New alien added succesfully!');
+
+    // Redirect to the desired page
+    return redirect()->route('home');
 
 }
 );

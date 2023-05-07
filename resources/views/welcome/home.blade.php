@@ -16,48 +16,57 @@
     </div>
     
     <div class="col-md-6">
+
+        @if (session('message'))
+            <div class="alert alert-success text-center">
+                {{ session('message') }}
+            </div>
+        @else
             <form method="post" action="/process" enctype="multipart/form-data" class="">
-                        @csrf
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="name" placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="email" name="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="location" placeholder="Location">
-                        </div>
+                @csrf
+                <div class="form-group">
+                    <input class="form-control" type="text" name="name" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="location" placeholder="Location">
+                </div>
 
-                        <div class="form-group">
-                           <select class="form-control" name="country">
-                                @foreach ($countries as $country)
-                                    <option value="{{$country->id}}">{{$country->name}}</option>
-                                @endforeach
-                           </select>
-                        </div>
+                <div class="form-group">
+                    <select class="form-control" name="country">
+                        @foreach ($countries as $country)
+                            <option value="{{$country->id}}">{{$country->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-                        <div class="form-group">
-                            <input class="form-control" type="date" name="date" placeholder="Date">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="time" name="time" placeholder="Time">
-                        </div>
-                        <div class="form-group form-check">
-                            <input class="form-check-input" type="checkbox" name="scary" id="scary">
-                            <label class="form-check-label" for="scary">Does the alien look scary?</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" name="message" rows="5"></textarea>
-                        </div>
-                    
-                        <div class="form-group">
-                            <input class="btn btn-primary" type="submit" value="Submit">
-                        </div>
+                <div class="form-group">
+                    <input class="form-control" type="date" name="date" placeholder="Date">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="time" name="time" placeholder="Time">
+                </div>
+                <div class="form-group form-check">
+                    <input class="form-check-input" type="checkbox" name="scary" id="scary">
+                    <label class="form-check-label" for="scary">Does the alien look scary?</label>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="message" rows="5"></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                </div>
             </form>
+        @endif
+
    </div>
 </div>
 
 
 </div>        
 </div>
+
 @endsection
